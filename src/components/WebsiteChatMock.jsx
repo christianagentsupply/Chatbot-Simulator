@@ -193,8 +193,10 @@ const WebsiteChatMock = ({ client }) => {
         )}
       </div>
       {/* Branding Badge */}
-      <div className="absolute bottom-2 right-4 z-50 text-xs text-gray-500 bg-white/80 px-3 py-1 rounded shadow border border-gray-200 select-none pointer-events-auto">
-        Powered by <a href="https://agentsupply.ai" target="_blank" rel="noopener noreferrer" className="text-blue-600 font-semibold hover:underline">Agent Supply</a>
+      <div className="absolute bottom-2 left-2 z-50">
+        <div className="text-xs text-gray-500 bg-white/80 px-3 py-1 rounded shadow border border-gray-200 select-none pointer-events-auto">
+          Powered by <a href="https://agentsupply.ai" target="_blank" rel="noopener noreferrer" className="text-blue-600 font-semibold hover:underline">Agent Supply</a>
+        </div>
       </div>
     </div>
   );
