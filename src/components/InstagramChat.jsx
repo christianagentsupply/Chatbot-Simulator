@@ -23,67 +23,50 @@ const InstagramChat = ({ client }) => {
   };
 
   const formatTime = (date) => {
-    return date.toLocaleTimeString('en-US', { 
-      hour: '2-digit', 
+    return date.toLocaleTimeString('en-US', {
+      hour: '2-digit',
       minute: '2-digit',
-      hour12: true 
+      hour12: false
     });
   };
 
   return (
-    <div className="h-screen bg-white flex flex-col">
+    <div className="h-screen bg-black flex flex-col">
       {/* Header */}
-      <div className="border-b border-gray-200 px-4 py-3 flex items-center">
-        <div className="w-8 h-8 bg-gradient-to-tr from-yellow-400 to-pink-500 rounded-full mr-3 flex items-center justify-center">
-          <span className="text-white font-semibold text-xs">
-            {client?.charAt(0)?.toUpperCase() || 'C'}
-          </span>
-        </div>
+      <div className="border-b border-[#262626] px-4 py-3 flex items-center bg-black">
         <div className="flex-1">
-          <h1 className="font-semibold text-base">{client || 'Customer Support'}</h1>
-          <p className="text-xs text-gray-500">Active now</p>
-        </div>
-        <div className="flex space-x-2">
-          <button className="p-2 text-gray-600 hover:text-gray-800 transition-colors">
-            <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-              <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
-            </svg>
-          </button>
-          <button className="p-2 text-gray-600 hover:text-gray-800 transition-colors">
-            <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-              <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z" />
-            </svg>
-          </button>
+          <h1 className="font-semibold text-base text-white">{client || 'Customer Support'}</h1>
+          <p className="text-xs text-gray-400">Active now</p>
         </div>
       </div>
 
       {/* Messages */}
-      <div className="flex-1 overflow-y-auto px-4 py-2 space-y-3">
-        {messages.map((message) => (
-          <div
-            key={message.id}
-            className={`flex ${message.sender === 'user' ? 'justify-end' : 'justify-start'}`}
-          >
-            <div
-              className={`max-w-xs lg:max-w-md px-3 py-2 rounded-2xl ${
-                message.sender === 'user'
-                  ? 'bg-gradient-to-r from-blue-500 to-purple-500 text-white'
-                  : 'bg-gray-100 text-gray-800'
-              } shadow-sm`}
-            >
-              <p className="text-sm">{message.text}</p>
-              <p className={`text-xs mt-1 ${
-                message.sender === 'user' ? 'text-blue-100' : 'text-gray-500'
-              }`}>
+      <div className="flex-1 overflow-y-auto px-4 py-4 space-y-3 bg-black">
+        {messages.map((message, idx) => (
+          <div key={message.id}>
+            {/* Timestamp above first message or if time gap (for demo, always show) */}
+            {idx === 0 && (
+              <div className="text-xs text-gray-500 text-center mb-2">
                 {formatTime(message.timestamp)}
-              </p>
+              </div>
+            )}
+            <div className={`flex ${message.sender === 'user' ? 'justify-end' : 'justify-start'}`}>
+              <div
+                className={`max-w-xs px-4 py-2 rounded-2xl text-sm font-medium break-words ${
+                  message.sender === 'user'
+                    ? 'bg-[#3797f0] text-white rounded-br-md'
+                    : 'bg-[#262626] text-white rounded-bl-md'
+                }`}
+                style={{ boxShadow: 'none' }}
+              >
+                {message.text}
+              </div>
             </div>
           </div>
         ))}
-        
         {isLoading && (
           <div className="flex justify-start">
-            <div className="bg-gray-100 text-gray-800 px-3 py-2 rounded-2xl shadow-sm">
+            <div className="bg-[#262626] text-white px-4 py-2 rounded-2xl text-sm font-medium">
               <div className="flex space-x-1">
                 <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"></div>
                 <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
@@ -92,44 +75,30 @@ const InstagramChat = ({ client }) => {
             </div>
           </div>
         )}
-        
         <div ref={messagesEndRef} />
       </div>
 
       {/* Input */}
-      <div className="border-t border-gray-200 px-4 py-3">
+      <div className="border-t border-[#262626] px-4 py-3 bg-black">
         <form onSubmit={handleSubmit} className="flex items-center space-x-2">
-          <button
-            type="button"
-            className="p-2 text-gray-500 hover:text-gray-700 transition-colors"
-          >
-            <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
-              <path fillRule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clipRule="evenodd" />
-            </svg>
-          </button>
-          <button
-            type="button"
-            className="p-2 text-gray-500 hover:text-gray-700 transition-colors"
-          >
-            <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
-              <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM7 9a1 1 0 100-2 1 1 0 000 2zm7-1a1 1 0 11-2 0 1 1 0 012 0zm-7.536 5.879a1 1 0 001.415 0 3 3 0 014.242 0 1 1 0 001.415-1.415 5 5 0 00-7.072 0 1 1 0 000 1.415z" clipRule="evenodd" />
-            </svg>
-          </button>
           <input
             type="text"
             value={inputText}
             onChange={(e) => setInputText(e.target.value)}
             placeholder="Message..."
-            className="flex-1 bg-gray-100 rounded-full px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white"
+            className="flex-1 bg-[#262626] text-white rounded-full px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#3797f0] focus:bg-black border-none"
             disabled={isLoading}
+            autoComplete="off"
           />
           <button
             type="submit"
             disabled={!inputText.trim() || isLoading}
-            className="p-2 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-full hover:from-blue-600 hover:to-purple-600 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+            className="w-12 h-12 flex items-center justify-center rounded-full bg-[#18171b] transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed border-none p-0"
+            style={{ boxShadow: 'none' }}
           >
-            <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-              <path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z" />
+            <svg className="w-8 h-8" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="16" cy="16" r="16" fill="#18171b" />
+              <polygon points="13,10.5 23,16 13,21.5" fill="#8B5CF6" />
             </svg>
           </button>
         </form>

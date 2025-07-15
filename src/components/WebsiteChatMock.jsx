@@ -93,7 +93,7 @@ const WebsiteChatMock = ({ client }) => {
       )}
 
       {/* Chat Widget */}
-      <div className="absolute bottom-4 left-4 z-50">
+      <div className="absolute bottom-4 right-4 z-50">
         {!isChatOpen ? (
           /* Chat Button */
           <button
@@ -154,7 +154,6 @@ const WebsiteChatMock = ({ client }) => {
                   </div>
                 </div>
               ))}
-              
               {isLoading && (
                 <div className="flex justify-start">
                   <div className="bg-white text-gray-800 px-3 py-2 rounded-lg shadow-sm">
@@ -166,10 +165,8 @@ const WebsiteChatMock = ({ client }) => {
                   </div>
                 </div>
               )}
-              
               <div ref={messagesEndRef} />
             </div>
-
             {/* Input */}
             <div className="p-3 border-t border-gray-200">
               <form onSubmit={handleSubmit} className="flex items-center space-x-2">
@@ -195,7 +192,6 @@ const WebsiteChatMock = ({ client }) => {
           </div>
         )}
       </div>
-
       {/* Branding Badge */}
       <div className="absolute bottom-2 right-4 z-50 text-xs text-gray-500 bg-white/80 px-3 py-1 rounded shadow border border-gray-200 select-none pointer-events-auto">
         Powered by <a href="https://agentsupply.ai" target="_blank" rel="noopener noreferrer" className="text-blue-600 font-semibold hover:underline">Agent Supply</a>
@@ -204,4 +200,4 @@ const WebsiteChatMock = ({ client }) => {
   );
 };
 
-export default WebsiteChatMock; 
+export default WebsiteChatMock;
