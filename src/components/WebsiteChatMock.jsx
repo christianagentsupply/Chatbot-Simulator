@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 const businessConfigs = {
   liamoon: {
     websiteUrl: 'https://www.liamoon.com/',
-    chatbotEmbed: `<iframe src="https://app.agentsupply.ai/en/chatbot/embed/4f93f2a7-e897-4bba-b604-e57ac481c500?position=right" width="100%" height="600" frameborder="0" allow='microphone'></iframe>`,
+    chatbotEmbed: `<iframe src=\"https://app.agentsupply.ai/en/chatbot/embed/4f93f2a7-e897-4bba-b604-e57ac481c500?position=right\" width=\"320\" height=\"600\" frameborder=\"0\" allow='microphone'></iframe>`,
     chatbotScript: `<script src=\"https://app.agentsupply.ai/static/chatbot/js/chatbubble.js\" data-id=\"4f93f2a7-e897-4bba-b604-e57ac481c500\" data-domain=\"https://app.agentsupply.ai\" data-position=\"right\"></script>`
   },
   // Add more businesses here
