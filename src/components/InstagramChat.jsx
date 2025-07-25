@@ -1,7 +1,17 @@
+import { useParams } from 'react-router-dom';
 import { useState, useRef, useEffect } from 'react';
 import { useChat } from '../hooks/useChat';
 
+const businessConfigs = {
+  leadconnectorhq: {
+    // No chatbotEmbed here, just use API replies
+  },
+  // Add more businesses here
+};
+
 const InstagramChat = ({ client }) => {
+  const { business } = useParams();
+  const config = businessConfigs[business?.toLowerCase()] || {};
   const { messages, isLoading, sendUserMessage } = useChat();
   const [inputText, setInputText] = useState('');
   const messagesEndRef = useRef(null);
