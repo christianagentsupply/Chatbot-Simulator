@@ -1,24 +1,21 @@
-import { BrowserRouter as Router, Routes, Route, useSearchParams } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useParams } from 'react-router-dom';
 import WhatsAppChat from './components/WhatsAppChat';
 import InstagramChat from './components/InstagramChat';
 import MessengerChat from './components/MessengerChat';
 import WebsiteChatMock from './components/WebsiteChatMock';
 
 const ChatRouter = () => {
-  const [searchParams] = useSearchParams();
-  const client = searchParams.get('client');
-  const platform = searchParams.get('platform');
+  const { business, platform } = useParams();
 
-  // Render appropriate chat component based on platform
   switch (platform) {
     case 'whatsapp':
-      return <WhatsAppChat client={client} />;
+      return <WhatsAppChat client={business} />;
     case 'instagram':
-      return <InstagramChat client={client} />;
+      return <InstagramChat client={business} />;
     case 'messenger':
-      return <MessengerChat client={client} />;
+      return <MessengerChat client={business} />;
     case 'web':
-      return <WebsiteChatMock client={client} />;
+      return <WebsiteChatMock client={business} />;
     default:
       return <NotFoundPage />;
   }
@@ -51,7 +48,7 @@ const NotFoundPage = () => {
         <div className="mt-6 text-sm text-gray-500">
           <p>Example URL format:</p>
           <code className="bg-gray-100 px-2 py-1 rounded text-xs">
-            demo.agentsupply.ai/clientname?platform=whatsapp
+            demo.agentsupply.ai/businessname/platform
           </code>
         </div>
       </div>
@@ -63,8 +60,8 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<ChatRouter />} />
-        <Route path="*" element={<ChatRouter />} />
+        <Route path="/:business/:platform" element={<ChatRouter />} />
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </Router>
   );
