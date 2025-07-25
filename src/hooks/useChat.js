@@ -14,6 +14,11 @@ const businessChatbotConfig = {
       chatbot_uuid: '8ceb3d9b-22b0-4bee-96a9-8691ae483af2',
     },
   },
+  laspampas: {
+    messenger: {
+      chatbot_uuid: '6933fb46-c12d-486f-9f5b-a733ef7d8366',
+    },
+  },
   // Add more business/platform configs here
 };
 
