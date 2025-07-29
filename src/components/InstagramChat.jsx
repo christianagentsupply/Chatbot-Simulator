@@ -45,7 +45,7 @@ const InstagramChat = ({ client }) => {
       {/* Header */}
       <div className="border-b border-[#262626] px-4 py-3 flex items-center bg-black">
         <div className="flex-1">
-          <h1 className="font-semibold text-base text-white">{client || 'Customer Support'}</h1>
+          <h1 className="font-semibold text-base text-white">{(client === 'leadconnectorhq' ? 'agent test' : client) || 'Customer Support'}</h1>
           <p className="text-xs text-gray-400">Active now</p>
         </div>
       </div>
