@@ -9,7 +9,17 @@ const businessChatbotConfig = {
       chatbot_uuid: '4cfa0b2d-0104-40d4-933f-ff6d6d0b59f9', // Use the UUID, not the numeric ID
     },
   },
+  agenttest: {
+    instagram: {
+      chatbot_uuid: '4cfa0b2d-0104-40d4-933f-ff6d6d0b59f9',
+    },
+  },
   officialvelare: {
+    whatsapp: {
+      chatbot_uuid: '8ceb3d9b-22b0-4bee-96a9-8691ae483af2',
+    },
+  },
+  velare: {
     whatsapp: {
       chatbot_uuid: '8ceb3d9b-22b0-4bee-96a9-8691ae483af2',
     },
