@@ -40,7 +40,7 @@ const WhatsAppChat = ({ client }) => {
           </span>
         </div>
         <div className="flex-1">
-          <h1 className="font-semibold text-lg">{client === 'officialvelare' ? 'velare' : client || 'Customer Support'}</h1>
+          <h1 className="font-semibold text-lg">{client === 'officialvelare' ? 'Velare' : client || 'Customer Support'}</h1>
           <p className="text-xs opacity-90">online</p>
         </div>
         <div className="flex space-x-3">
