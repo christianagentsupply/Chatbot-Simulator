@@ -40,7 +40,7 @@ const MessengerChat = ({ client }) => {
           </span>
         </div>
         <div className="flex-1">
-          <h1 className="font-semibold text-lg">{client === 'laspampas' ? 'Los Pampas' : client || 'Customer Support'}</h1>
+          <h1 className="font-semibold text-lg">{client === 'laspampas' ? 'Las Pampas' : client || 'Customer Support'}</h1>
           <p className="text-xs opacity-90">Active now</p>
         </div>
         <div className="flex space-x-2">
